@@ -801,6 +801,7 @@ Layout: Content-Sidebar
 .entry-meta {
 
 	font-size: 12px ;
+	
 }
 
 
@@ -811,14 +812,16 @@ Layout: Content-Sidebar
 	border-bottom: 0;
 	margin-bottom: 0;
 
-	font-size: 20px;
+	font-size: 18px;
 }
 
 
 /* Affects the box of posts with both hentry and type-post classes */
 .hentry.type-post {
-	border-bottom: 5px solid rgb(2, 43, 91);
-	margin: 0 0 0;
+	border-bottom: 2px solid rgb(2, 43, 91);
+	margin: -12px 0 0;
 	padding-left: 3em;
 	padding-bottom: 0em;
+	height: 52px;
 }
+
