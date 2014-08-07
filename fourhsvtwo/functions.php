@@ -234,3 +234,29 @@ function add_login_out_item_to_menu( $items, $args ){
 
 	return $items.= '<li id="log-in-out-link" class="menu-item menu-type-link">'. $link . '</li>';
 }add_filter( 'wp_nav_menu_items', 'add_login_out_item_to_menu', 50, 2 );
+
+
+//Customizing login form
+//Login Logo
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/custom-logo.gif);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+
+//Login Logo Link
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Four Horsemen Founder Society';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
