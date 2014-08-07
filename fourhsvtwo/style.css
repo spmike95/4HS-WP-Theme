@@ -798,7 +798,7 @@ Layout: Content-Sidebar
 
 
 /* makes the date, user, comment, edit, etc. appear small*/
-.entry-meta {
+.home .entry-meta {
 
 	font-size: 12px ;
 	
@@ -806,7 +806,7 @@ Layout: Content-Sidebar
 
 
 /* affects all the titles (h1) that are within a type-post class */
-.type-post h1 {
+.home .type-post h1 {
 
 	padding-bottom: 0;
 	border-bottom: 0;
@@ -817,7 +817,7 @@ Layout: Content-Sidebar
 
 
 /* Affects the box of posts with both hentry and type-post classes */
-.hentry.type-post {
+.home .hentry.type-post {
 	border-bottom: 2px solid rgb(2, 43, 91);
 	margin: -12px 0 0;
 	padding-left: 3em;
