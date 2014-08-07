@@ -217,3 +217,20 @@ function no_wp_logo_admin_bar_remove() {
     $wp_admin_bar->remove_menu('wp-logo');
 }
 add_action('wp_before_admin_bar_render', 'no_wp_logo_admin_bar_remove', 0);
+
+//Add login/logout link to naviagation menu
+//Requires a created menu be used as primary menu
+function add_login_out_item_to_menu( $items, $args ){
+
+	//change theme location with your theme location name
+	if( is_admin() ||  $args->theme_location != 'primary' )
+		return $items; 
+
+		//change to desired url
+	$redirect = "https://foundersociety.nd.edu/wordpress";
+	if( is_user_logged_in( ) )
+		$link = '<a href="' . wp_logout_url( $redirect ) . '" title="' .  __( 'Logout' ) .'">' . __( 'Logout' ) . '</a>';
+	else  $link = '<a href="' . wp_login_url( $redirect  ) . '" title="' .  __( 'Login' ) .'">' . __( 'Login' ) . '</a>';
+
+	return $items.= '<li id="log-in-out-link" class="menu-item menu-type-link">'. $link . '</li>';
+}add_filter( 'wp_nav_menu_items', 'add_login_out_item_to_menu', 50, 2 );
