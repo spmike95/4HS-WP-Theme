@@ -25,9 +25,7 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
-			<!-- for logo img, ../../../ etc. is needed for MAMP localhost:8888, but not for actual website
-			change to appropriate link-->
-			<img src="../../../../../wp-content/uploads/2014/07/logo-small.png" alt="Logo">
+			<img src="wp-content/uploads/2014/07/logo-small.png" alt="Logo">
 			<h1 class="site-title">  <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</div>
@@ -41,6 +39,7 @@
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle"><?php _e( 'Primary Menu', 'fourhsvtwo' ); ?></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+			<?php get_search_form(); ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 

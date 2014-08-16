@@ -141,7 +141,7 @@ textarea {
 
 body {
 
-	background: #dcb439;
+	background: #FFFFCC;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -383,6 +383,7 @@ textarea {
 --------------------------------------------------------------*/
 a {
 	color: royalblue;
+	text-decoration: none;
 }
 a:visited {
 	color: purple;
@@ -391,6 +392,7 @@ a:hover,
 a:focus,
 a:active {
 	color: midnightblue;
+	text-decoration: underline;
 }
 
 
@@ -402,22 +404,41 @@ a:active {
 	max-width: 1050px;
 }
 
+/*hides sidebar*/
 #secondary,
 #tertiary {
 	background: #32cd32;
+	display: none;
 }
 
 /* =Site Header
 ----------------------------------------------- */
 
+
+/* this causes the header to appear as if it
+does not span the page*/
+#masthead.site-header {
+	border-right: 50px; 
+	border-right-style: solid;
+	border-left: 50px;
+	border-left-style: solid;
+	border-color: #FFFFCC;
+}
+
 .site-header {
 	background: #002b5b;
-	padding: 1.5em 2em;
+	padding: 1.0em 0px;
+	position: fixed;
+	width: 100%
 }
 .site-title {
 	font-size: 45px;
 	font-size: 4.5rem;
 	font-style: italic;
+
+	/*places title in horizontal alignment with main nav */
+	padding: 0 24px 10px;
+	margin-left: 100px;
 }
 .site-description {
 	font-size: 13px;
@@ -434,7 +455,13 @@ a:active {
 .main-navigation {
     clear: both;
     display: block;
-    padding: 1.5em;
+   /* padding: 1.5em; */
+
+
+    /*places navigation bar towards left side*/
+    padding: 5px 24px;
+    margin-right: 0;
+	margin-left: 100px
 }
 .main-navigation:after {
 	clear: both;
@@ -576,6 +603,13 @@ a:active {
 	margin: 0 auto;
 }
 
+/* Creates padding on left and right of whole page */
+/*padding set to site-content, creates the cream background */
+#page {
+	/* margin: 0 50px;  */ 
+	background: #FFFFCC;
+}
+
 /*--------------------------------------------------------------
 8.0 Clearings
 --------------------------------------------------------------*/
@@ -624,6 +658,11 @@ a:active {
 /*--------------------------------------------------------------
 10.0 Content
 --------------------------------------------------------------*/
+
+#content.site-content {
+	padding-top: 200px; /* Height of header */
+}
+
 /*--------------------------------------------------------------
 10.1 Posts and pages
 --------------------------------------------------------------*/
@@ -634,6 +673,7 @@ a:active {
 	margin: 0 3em 0;
 	padding-bottom: 1.5em;
 }
+
 .updated {
 	display: none;
 }
@@ -762,6 +802,7 @@ Theme Name: FourHSVTwo
 Layout: Content-Sidebar
 */
 
+/*
 .content-area {
 	float: left;
 	margin: 0 -25% 0 0;
@@ -780,15 +821,16 @@ Layout: Content-Sidebar
 	width: 100%;
 }
 
+*/
+
 
 /* Fix logo in header */
 
 .site-branding img {
 
 	position: absolute;
-/*  left: 10px; on 4HS website */
-	left: 110px;
-	top: 20px;
+	left: 25px;
+	top: 30px;
 	vertical-align: baseline;
 	z-index: 1;
 }
@@ -825,3 +867,23 @@ Layout: Content-Sidebar
 	height: 52px;
 }
 
+
+/*used instead of page. Holds the gold color */
+.site-content {
+
+	margin-left: 50px;
+	margin-right: 50px; 
+	background: #dcb439;
+}
+
+/*puts search bar at right edge */
+.search-form {
+
+	float: right;
+}
+
+/* brings the main content area up to be right below the header */
+#primary.content-area{
+
+	margin-top: -55px
+}

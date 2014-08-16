@@ -35,16 +35,17 @@ $args = array(
 );
 $comments = get_comments($args);
 foreach($comments as $comment) :
+
+	//use usernum instead of userurl if default links are in place
 	$userurl = site_url() . "/author/" . $comment->comment_author;
+    $usernum = site_url() . "/?author=" . $comment->user_id;
 	$postnumber = $comment->comment_post_ID;
 	$posttitle = get_the_title($postnumber);
 	$postlink = get_permalink($postnumber);
 	$datetime = $comment->comment_date;
 
-	//echo $datetime;
-	//echo $userurl;
-	//echo "<a href=" . $userurl . ">" . $comment->comment_author . "</a>";
-	echo("<a href=" . $userurl . ">" . $comment->comment_author . "</a>" . " on <a href=" . $postlink .">" . $posttitle . "</a> at " . $datetime .'<br />'); 
+	
+	echo("<a href=" . $usernum . ">" . $comment->comment_author . "</a>" . " on <a href=" . $postlink .">" . $posttitle . "</a> at " . $datetime .'<br />'); 
 	echo($comment->comment_content . '<br /> <br />');
 endforeach;
 ?>
