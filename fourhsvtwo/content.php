@@ -6,7 +6,14 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php print_post_title() ?>
+		<?php 
+		//Removes (link) from jobs
+		if ('job' == get_post_type() ){
+
+					the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' );
+				}
+				else{
+			print_post_title(); } ?>
 
 
 		<?php if ( 'post' == get_post_type() ) : ?>

@@ -408,7 +408,6 @@ a:active {
 #secondary,
 #tertiary {
 	background: #32cd32;
-	display: none;
 }
 
 /* =Site Header
@@ -860,15 +859,15 @@ Layout: Content-Sidebar
 
 /* Affects the box of posts with both hentry and type-post classes */
 .home .hentry.type-post {
-	border-bottom: 2px solid rgb(2, 43, 91);
-	margin: -12px 0 0;
+	border-bottom: 0px solid rgb(2, 43, 91);
+	margin: -7px 0 0;
 	padding-left: 3em;
 	padding-bottom: 0em;
 	height: 52px;
 }
 
 
-/*used instead of page. Holds the gold color */
+/* used instead of page. Holds the gold color */
 .site-content {
 
 	margin-left: 50px;
@@ -876,14 +875,53 @@ Layout: Content-Sidebar
 	background: #dcb439;
 }
 
-/*puts search bar at right edge */
+/* puts search bar at right edge */
 .search-form {
 
 	float: right;
 }
 
 /* brings the main content area up to be right below the header */
-#primary.content-area{
+.home #primary.content-area{
 
-	margin-top: -55px
+	margin-top: -35px
+}
+
+/* Distance between header and jobs */
+.page-template-jobs-php #primary.content-area{
+
+	margin-top: -35px
+}
+
+/* Distance between header and trending posts */
+.page-template-trending-php #primary.content-area{
+
+	margin-top: -35px
+}
+
+/* Affects the trending posts */
+.trending {
+	border-bottom: 0px solid rgb(2, 43, 91);
+	margin: -7px 0 0;
+	padding-left: 3em;
+	padding-bottom: 0em;
+	height: 52px;
+}
+
+.trending a{
+	font-size: 18px;
+}
+
+/* Affects the box of posts with hentry class on jobs page */
+.page-template-jobs-php .hentry {
+	border-bottom: 0px solid rgb(2, 43, 91);
+	margin: -7px 0 0;
+	padding-left: 3em;
+	padding-bottom: 0em;
+	height: 52px;
+}
+
+/* Affects title size of jobs on jobs page */
+.page-template-jobs-php .entry-header h1{
+	font-size: 18px;
 }

@@ -158,7 +158,7 @@ function my_custom_post_job() {
 }
 add_action( 'init', 'my_custom_post_job' );
 
-
+//adds link to title
 function print_post_title() {
 global $post;
 $thePostID = $post->ID;
@@ -197,11 +197,12 @@ $ht = substr($strlink,0,7);
 } else {
 $link = $perm;
 }
-echo '<h1><a href="'.$link.'" rel="bookmark" title="'.$title.'">'.$title.'</a></h1>';
+echo '<h1><a href="'.$link.'" rel="bookmark" title="'.$title.'">'.$title.' ('.$link.')</a></h1>';
 }
 
 
-
+//Adds default text to posts
+/*
 function my_default_post($content)
 {
 	if (empty($content))
@@ -210,6 +211,7 @@ function my_default_post($content)
 }
 
 add_filter('the_editor_content', 'my_default_post');
+*/
 
 
 function no_wp_logo_admin_bar_remove() {
@@ -227,7 +229,7 @@ function add_login_out_item_to_menu( $items, $args ){
 		return $items; 
 
 		//change to desired url
-	$redirect = "https://foundersociety.nd.edu/wordpress";
+	$redirect = site_url();
 	if( is_user_logged_in( ) )
 		$link = '<a href="' . wp_logout_url( $redirect ) . '" title="' .  __( 'Logout' ) .'">' . __( 'Logout' ) . '</a>';
 	else  $link = '<a href="' . wp_login_url( $redirect  ) . '" title="' .  __( 'Login' ) .'">' . __( 'Login' ) . '</a>';
@@ -260,3 +262,45 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+//Remove option to add media to posts
+function z_remove_media_controls() {
+     remove_action( 'media_buttons', 'media_buttons' );
+}
+ add_action('admin_head','z_remove_media_controls');
+
+
+//Remove media from the + in the toolbar
+
+ add_action( 'admin_bar_menu', 'remove_wp_nodes', 999 );
+function remove_wp_nodes() 
+{
+    global $wp_admin_bar;   
+    $wp_admin_bar->remove_node( 'new-media' );
+}
+
+//Remove media and tools from dashboard for non-admin users
+function remove_menus(){
+ 
+	if (! current_user_can('edit_dashboard')) {
+  		remove_menu_page( 'upload.php' );                 //Media
+  		remove_menu_page( 'tools.php' );                  //Tools
+	}
+  
+}
+add_action( 'admin_menu', 'remove_menus' );
+
+//Remove unwanted modules from post edit screen
+function my_remove_meta_boxes() {
+ if( !current_user_can('edit_dashboard') ) {
+  remove_meta_box('postexcerpt', 'post', 'normal');
+  remove_meta_box('trackbacksdiv', 'post', 'normal');
+  remove_meta_box('commentstatusdiv', 'post', 'normal');
+  remove_meta_box('commentsdiv', 'post', 'normal');
+  remove_meta_box('slugdiv', 'post', 'normal');
+  remove_meta_box('authordiv', 'post', 'normal');
+  remove_meta_box('tagsdiv-post_tag', 'post', 'normal');
+  remove_meta_box('categorydiv', 'post', 'normal');
+  remove_meta_box('formatdiv', 'post', 'normal');
+ }
+}
+add_action( 'admin_menu', 'my_remove_meta_boxes' );

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Comments Page
+ * Template Name: Trending Page
  *
  * Selectable from a dropdown menu on the edit page screen.
  */
@@ -33,28 +33,38 @@ $args = array(
 	'number' => '10',
 	//'post_id' => 1, // use post_id, not post_ID
 );
+
+$postarray = array();
+
+
 $comments = get_comments($args);
 foreach($comments as $comment) :
 
 	//use usernum instead of userurl if default links are in place
 	$userurl = site_url() . "/author/" . $comment->comment_author;
-    $usernum = site_url() . "/?author=" . $comment->user_id;
+	$usernum = site_url() . "/?author=" . $comment->user_id;
 	$postnumber = $comment->comment_post_ID;
 	$posttitle = get_the_title($postnumber);
 	$postlink = get_permalink($postnumber);
 	$datetime = $comment->comment_date;
 
-	
-	echo("<a href=" . $usernum . ">" . $comment->comment_author . "</a>" . " on <a href=" . $postlink .">" . $posttitle . "</a> at " . $datetime .'<br />'); 
-	echo($comment->comment_content . '<br /> <br />');
+	if (! in_array($postnumber, $postarray)) {
+
+		array_push($postarray, $postnumber);
+		echo "<div class=\"trending\">";
+		//echo("<a href=" . $userurl . ">" . $comment->comment_author . "</a>" . " on <a href=" . $postlink .">" . $posttitle . "</a> at " . $datetime .'<br />'); 
+		//echo($comment->comment_content . '<br /> <br />');
+		echo( "<a href=" . $postlink .">" . $posttitle . "</a>");
+		echo "</div>";
+	}
 endforeach;
 ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>
 
 
-			
+						
