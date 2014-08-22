@@ -899,17 +899,32 @@ Layout: Content-Sidebar
 	margin-top: -35px
 }
 
-/* Affects the trending posts */
-.trending {
+/* makes the date, user, comment, edit, etc. appear small on trending */
+.page-template-trending-php .entry-meta {
+
+	font-size: 12px ;
+	
+}
+
+
+/* affects all the titles (h1) that are within a type-post class on trending */
+.page-template-trending-php .type-post h1 {
+
+	padding-bottom: 0;
+	border-bottom: 0;
+	margin-bottom: 0;
+
+	font-size: 18px;
+}
+
+
+/* Affects the box of posts with both hentry and type-post classes on trending */
+.page-template-trending-php .hentry.type-post {
 	border-bottom: 0px solid rgb(2, 43, 91);
 	margin: -7px 0 0;
 	padding-left: 3em;
 	padding-bottom: 0em;
 	height: 52px;
-}
-
-.trending a{
-	font-size: 18px;
 }
 
 /* Affects the box of posts with hentry class on jobs page */
