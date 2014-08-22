@@ -45,7 +45,6 @@ foreach($comments as $comment) :
 	$authurl = site_url() . "/author/" . get_the_author_meta( 'display_name', get_post_field( 'post_author', $postnumber ));
 	$authnum = site_url() . "/?author=" . get_post_field( 'post_author', $postnumber );
 	$auth = get_the_author_meta( 'display_name', get_post_field( 'post_author', $postnumber ));
-	$authnum = site_url() . "/?author=" . 
 	$posttitle = get_the_title($postnumber);
 	$postlink = get_permalink($postnumber);
 	$datetime = get_post_field( 'post_date', $postnumber);
@@ -68,7 +67,7 @@ foreach($comments as $comment) :
 
 		echo "<div class=\"entry-meta\">";
 
-		echo "Posted on <a href=" . $postlink . ">" . $newdatetime . "</a> by <a href=" . $authurl . ">" . $auth . "</a>";
+		echo "Posted on <a href=" . $postlink . ">" . $newdatetime . "</a> by <a href=" . $authnum . ">" . $auth . "</a>";
 		echo " | ";
 
 		if ( ! post_password_required($postnumber) && ( comments_open($postnumber) || '0' != (int) get_post_field( 'comment_count', $postnumber ) ) ) :
