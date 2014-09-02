@@ -374,3 +374,12 @@ $cvrtdatetime = $month . " " . $day . ", " . $year;
 return $cvrtdatetime;
 
 }
+
+//Removes ability to put text content in posts
+function remove_box()
+{
+	if( !current_user_can('edit_dashboard') ) {
+    	remove_post_type_support('post', 'editor');
+    }
+}
+add_action("admin_init", "remove_box");
