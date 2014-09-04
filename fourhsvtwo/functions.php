@@ -383,3 +383,40 @@ function remove_box()
     }
 }
 add_action("admin_init", "remove_box");
+
+
+//Sets default screen options
+function set_user_metaboxes($user_id=NULL) {
+    $post_types= array( 'post' );
+    // add any custom post types here:
+    // $post_types[]= 'my_custom_post_type';
+    foreach ($post_types as $post_type) {
+
+       // These are the metakeys we will need to update
+       $meta_key= array(
+           'order' => "meta-box-order_$post_type",
+           'hidden' => "metaboxhidden_$post_type",
+       );
+
+       // So this can be used without hooking into user_register
+       if ( ! $user_id)
+           $user_id = get_current_user_id(); 
+
+       // Set the default order if it has not been set yet
+       if ( ! get_user_option( $meta_key['order'], $user_id ) ) {
+           $meta_value = array(
+               //'side' => 'submitdiv,formatdiv,categorydiv,postimagediv',
+               'normal' => 'postcustom',
+               //'advanced' => '',
+           );
+           update_user_option( $user_id, $meta_key['order'], $meta_value, true );
+       }
+
+       // Set the default hiddens if it has not been set yet
+       if ( ! get_user_option( $meta_key['hidden'], $user_id ) ) {
+           $meta_value = array();
+           update_user_option( $user_id, $meta_key['hidden'], $meta_value, true );
+       }
+    }
+ }
+ add_action( 'user_register', 'set_user_metaboxes', 10, 1 );
