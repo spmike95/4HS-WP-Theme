@@ -940,3 +940,57 @@ Layout: Content-Sidebar
 .page-template-jobs-php .entry-header h1{
 	font-size: 18px;
 }
+
+
+/*CSS for mobile devices*/
+@media only screen and (max-device-width: 480px) {
+body{
+ background: #FFFFCC;
+}
+
+#masthead.site-header {
+	border-color: #FFFFCC;
+    border-right: 0px;
+border-left: 0px;
+}
+
+.site-header {
+
+  position: relative;
+
+}
+
+.site-branding img {
+
+  display: none;
+
+}
+
+.site-title{
+
+font-size: 2rem;
+}
+
+.home #primary.content-area{
+
+	margin-top: -1px
+}
+
+.home .hentry.type-post {
+	border-bottom: 0px solid rgb(2, 43, 91);
+	margin: -150px 0 0;
+	padding-left: 1.5em;
+	padding-bottom: 0em;
+	height: 52px;
+}
+
+#content.site-content {
+	padding-top: 200px; /* Height of header */
+}
+
+.site-content{
+
+margin-left: 0px;
+margin-right: 0px;
+}
+	}
