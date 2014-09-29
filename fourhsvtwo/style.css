@@ -386,7 +386,7 @@ a {
 	text-decoration: none;
 }
 a:visited {
-	/*color: purple*/;
+	/* color: purple; */
 }
 a:hover,
 a:focus,
@@ -828,10 +828,12 @@ Layout: Content-Sidebar
 .site-branding img {
 
 	position: absolute;
-	left: 25px;
+	left: 15px;
 	top: 30px;
 	vertical-align: baseline;
 	z-index: 1;
+     height: 90px;
+     width: 90px;
 }
 
 
@@ -942,7 +944,6 @@ Layout: Content-Sidebar
 }
 
 
-/*CSS for mobile devices*/
 @media only screen and (max-device-width: 480px) {
 body{
  background: #FFFFCC;
@@ -973,7 +974,7 @@ font-size: 2rem;
 
 .home #primary.content-area{
 
-	margin-top: -1px
+	margin-top: 75px
 }
 
 .home .hentry.type-post {
@@ -994,3 +995,11 @@ margin-left: 0px;
 margin-right: 0px;
 }
 	}
+
+
+
+
+
+
+
+

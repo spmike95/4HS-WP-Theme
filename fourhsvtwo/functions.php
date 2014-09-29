@@ -192,28 +192,35 @@ $hts = substr($strlink,0,8);
 	if (strcasecmp($ht, "http://") == 0 || strcasecmp($hts, "https://") == 0)
 		{$link = $link;}
 	else { $link = "http://" . (string)$link;}
+        $titlelink = $link;
+   if (strlen($link) > 65){
+      $titlelink = (string) substr($link,0,65) . "...";
+
+}
+
 }
 
 
 } else {
 $link = $perm;
 }
-echo '<h1><a href="'.$link.'" rel="bookmark" title="'.$title.'">'.$title.' ('.$link.')</a></h1>';
+echo '<h1><a href="'.$link.'" rel="bookmark" title="'.$title.'">'.$title.' ('.$titlelink.')</a></h1>';
 }
 
 
 //Adds default text to posts
+
 /*
 function my_default_post($content)
 {
 	if (empty($content))
-		$content = "Instructions here!";
+		$content = "Select the url_title custom field and enter the url you want to link to as the value. Click the \"Add Custom Field\" button and then publish your post!";
 	return $content;
 }
 
 add_filter('the_editor_content', 'my_default_post');
-*/
 
+*/
 
 function no_wp_logo_admin_bar_remove() {
     global $wp_admin_bar;
@@ -259,7 +266,7 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_logo_url_title() {
-    return 'Four Horsemen Founder Society';
+    return 'Notre Dame Entrepreneurs';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
@@ -295,8 +302,8 @@ function my_remove_meta_boxes() {
  if( !current_user_can('edit_dashboard') ) {
   remove_meta_box('postexcerpt', 'post', 'normal');
   remove_meta_box('trackbacksdiv', 'post', 'normal');
-  remove_meta_box('commentstatusdiv', 'post', 'normal');
-  remove_meta_box('commentsdiv', 'post', 'normal');
+  //remove_meta_box('commentstatusdiv', 'post', 'normal');
+  //remove_meta_box('commentsdiv', 'post', 'normal');
   remove_meta_box('slugdiv', 'post', 'normal');
   remove_meta_box('authordiv', 'post', 'normal');
   remove_meta_box('tagsdiv-post_tag', 'post', 'normal');
@@ -376,16 +383,19 @@ return $cvrtdatetime;
 }
 
 //Removes ability to put text content in posts
+
+
 function remove_box()
 {
-	if( !current_user_can('edit_dashboard') ) {
-    	remove_post_type_support('post', 'editor');
-    }
+if( !current_user_can('edit_dashboard') ) {
+    remove_post_type_support('post', 'editor');
+}
 }
 add_action("admin_init", "remove_box");
 
 
-//Sets default screen options
+
+//Sets default screen options to show custom fields
 function set_user_metaboxes($user_id=NULL) {
     $post_types= array( 'post' );
     // add any custom post types here:
@@ -406,7 +416,7 @@ function set_user_metaboxes($user_id=NULL) {
        if ( ! get_user_option( $meta_key['order'], $user_id ) ) {
            $meta_value = array(
                //'side' => 'submitdiv,formatdiv,categorydiv,postimagediv',
-               'normal' => 'postcustom',
+               'normal' => 'postcustom,commentstatusdiv',
                //'advanced' => '',
            );
            update_user_option( $user_id, $meta_key['order'], $meta_value, true );
@@ -420,3 +430,23 @@ function set_user_metaboxes($user_id=NULL) {
     }
  }
  add_action( 'user_register', 'set_user_metaboxes', 10, 1 );
+
+//Adds notice to post editor to give instructions
+
+function my_admin_notice(){
+
+    global $pagenow;
+
+    if ( $pagenow == 'post-new.php' || $pagenow == 'post.php') {
+
+         echo '<div class="error">
+
+             <p>Instructions: Select the url_title custom field and enter the url you want to link to as the value. Click the "Add Custom Field" button and then publish your post!</p>
+
+         </div>';
+
+    }
+
+}
+
+add_action('admin_notices', 'my_admin_notice');
