@@ -422,13 +422,14 @@ does not span the page*/
 	border-left: 50px;
 	border-left-style: solid;
 	border-color: #FFFFCC;
+        z-index: 8;
 }
 
 .site-header {
 	background: #002b5b;
 	padding: 1.0em 0px;
 	position: fixed;
-	width: 100%
+	width: 100%;
 }
 .site-title {
 	font-size: 45px;
@@ -831,7 +832,7 @@ Layout: Content-Sidebar
 	left: 15px;
 	top: 30px;
 	vertical-align: baseline;
-	z-index: 1;
+	z-index: 9;
      height: 90px;
      width: 90px;
 }
@@ -994,12 +995,79 @@ font-size: 2rem;
 margin-left: 0px;
 margin-right: 0px;
 }
-	}
+
+   }
+
+/* add styling to the calendar */
+
+/*Entire calendar area*/
+
+#tribe-events {
+
+	/*background-color: white;*/
+	position: relative;
+}
+
+/* From View As down to Find Events */
+
+#tribe-events-bar {
+
+	/*background-color: red;*/
+}
+
+/* Remove Find Events text */
+
+#tribe-bar-collapse-toggle {
+
+	display: none;
+}
+
+/* Remove faulty view as Month or Day */
+
+#tribe-bar-views {
+
+	display: none;
+}
+
+/*Remove Find Events button*/
+
+.tribe-bar-submit {
+
+	display: none;
+}
 
 
+/* Title and actual calendar */
 
 
+/* title */
+.tribe-events-page-title {
 
+	/*background-color: green;*/
+}
 
+/*Calendar*/
 
+.tribe-events-calendar {
+
+	/*background-color: gold;*/
+}
+
+/*Get rid of Results not Found*/
+
+.tribe-events-notices {
+
+	display: none;
+}
+
+/*Make the outline of the calendar black */
+#tribe-events-content table.tribe-events-calendar, #tribe-events-content .tribe-events-calendar td {
+border: 1px solid black;
+}
+
+/*Get rid of blue bar at bottom of page*/
+.tribe-filter-live .post-0 {
+
+	border: none;
+}
 
