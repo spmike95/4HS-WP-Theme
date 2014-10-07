@@ -292,6 +292,7 @@ function remove_menus(){
 	if (! current_user_can('edit_dashboard')) {
   		remove_menu_page( 'upload.php' );                 //Media
   		remove_menu_page( 'tools.php' );                  //Tools
+		remove_menu_page( 'edit.php?post_type=tribe_events');
 	}
   
 }
